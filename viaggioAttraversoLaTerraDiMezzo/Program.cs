@@ -21,7 +21,7 @@
                 Console.WriteLine("la tua posizione attuale e: " + mappa);
                 Console.WriteLine("hai" + puntiS + " punti salute");
                 if(evento <= 3)
-                {
+                { 
                     Console.WriteLine("hai incontrato un mostro");
                     int random = rand.Next(1,2);
                    
