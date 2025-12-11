@@ -9,7 +9,7 @@
             
             
             Console.WriteLine("partirai dalla Contea");
-            Console.WriteLine("hai" + puntiS + " punti salute e un buff personaggio(+1 probabilita di fuga)");
+            Console.WriteLine("hai " + puntiS + " punti salute e un buff personaggio(+1 probabilita di fuga)");
             while (i == false)
             {
                
@@ -17,11 +17,11 @@
                 int danno = rand.Next(6);
                 int casella = rand.Next(4);
                 int evento = rand.Next(9);
-                int vitaM = 10;
-                mappa[j] = mappa[j + casella];
                 j++;
+                mappa[j] = mappa[j + casella];
+                
                 Console.WriteLine("la tua posizione attuale e: " + mappa);
-                Console.WriteLine("hai" + puntiS + " punti salute");
+                Console.WriteLine("hai " + puntiS + " punti salute");
                 if(evento <= 3)
                 {
                     
@@ -39,11 +39,8 @@
                         Console.WriteLine("Il mostro ti ha impedito di fuggire, ora combatti!");
                         if (danno >= 3)
                         {
-                            while (vitaM > 0)
-                            {
-                                vitaM = vitaM - danno;
-                            }
-                            Console.WriteLine("Congratulazioni!, sei riuscito ha sconfiggere il mostro, ecco la tua ricompenza");
+                           
+                            Console.WriteLine("Congratulazioni!, sei riuscito ha sconfiggere il mostro");
                             
                         }
                         else
@@ -59,7 +56,7 @@
                     else if (risposta == "n")
                     {
                         Console.WriteLine("Hai scelto di non fuggire, sei coraggioso!");
-                        if (danno <= 3)
+                        if (danno >= 3)
                         {
                             
                             Console.WriteLine("Congratulazioni!, sei riuscito ha sconfiggere il mostro");
