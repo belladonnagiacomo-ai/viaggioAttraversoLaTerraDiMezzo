@@ -17,9 +17,9 @@
                 int danno = rand.Next(6);
                 int casella = rand.Next(4);
                 int evento = rand.Next(9);
-                j++;
+               
                 mappa[j] = mappa[j + casella];
-                
+                j++;
                 Console.WriteLine("la tua posizione attuale e: " + mappa);
                 Console.WriteLine("hai " + puntiS + " punti salute");
                 if(evento <= 3)
@@ -75,6 +75,54 @@
                     }
                     
                    
+                }
+                else if(evento <= 6)
+                {
+                    Console.WriteLine("Hai incontrato una creatura magica, vuoi provare a interagirci?(s/n)");
+                    string risposta = Console.ReadLine();
+                    int probabilitaP = rand.Next(1,2);
+                    if (risposta == "s" && probabilitaP == 1)
+                    {
+                        mappa[j] = mappa[j + 2];
+                        Console.WriteLine("Hai incontrato una creatura abbastanza socievole che ti aiutera mandandoti avanti di 2 caselle nel tuo percorso e perciò la tua posizione attuale e: " + mappa);
+                    }
+                    else if(risposta == "s" && probabilitaP == 2)
+                    {
+                        Console.WriteLine("Per tua sfortuna questa creatura non e molto socievole con te e perciò ti ostacolera");
+
+                        Console.WriteLine("vuoi provare a scappare?(s/n)");
+                        string risp = Console.ReadLine();
+                        int fuga = rand.Next(2);
+
+                        if (risp == "s" && fuga >= 1)
+                        {
+                            Console.WriteLine("il buff personaggio è stato applicato, e sei riuscito a fuggire dal mostro");
+
+                        }
+                        else if (risp == "s" && fuga < 1)
+                        {
+                            Console.WriteLine("La creatura ti ha impedito di fuggire, ora combatti!");
+                            if (danno >= 3)
+                            {
+
+                                Console.WriteLine("Congratulazioni!, sei riuscito ha sconfiggerla");
+
+                            }
+                            else
+                            {
+                                puntiS = puntiS - danno;
+                                Console.WriteLine("sei stato colpito e sei scappato ma la tua salute ora e:" + puntiS);
+                                if (puntiS == 0)
+                                {
+                                    i = true;
+                                }
+                            }
+                        }
+                    }
+                    else if(risposta == "n")
+                    {
+                        Console.WriteLine("Hai deciso di non interagire con la creatura magiche e quindi hai continuato il tuo lungo cammino");
+                    }
                 }
 
                
