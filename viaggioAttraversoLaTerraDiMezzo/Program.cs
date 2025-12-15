@@ -9,6 +9,7 @@ namespace viaggioAttraversoLaTerraDiMezzo
            
             int puntiS = 10, posizioneG = 0, pozioniCura = 0, cavalcature = 0, invisibilità = 0;
             int[] inventario = { pozioniCura, cavalcature, invisibilità };
+            string[] nomiOggetti = { "pozioni di cura", "cavalcature", "invisibilità" };
             Random rand = new Random();
 
             Console.WriteLine("partirai dalla Contea");
@@ -37,8 +38,15 @@ namespace viaggioAttraversoLaTerraDiMezzo
                     Console.WriteLine("Ti sei mosso di " + casella + " passi.");
                     Console.WriteLine("Ti trovi sulla casella: " + mappa[posizioneG]);
                     Console.WriteLine("hai " + puntiS + " punti salute");
-                    Console.WriteLine("Il tuo inventario al momento e: " + inventario);
-                    if (evento <= 3)
+                for (int z = 0; z < inventario.Length; z++)
+                {
+                    Console.WriteLine("              ");
+                    Console.WriteLine(nomiOggetti[z]);
+                    Console.WriteLine("Il tuo inventario al momento e: " + inventario[z]);
+                    Console.WriteLine("              ");
+
+                }
+                if (evento <= 3)
                     {
 
                         Console.WriteLine("hai incontrato un mostro, vuoi provare a scappare?(s/n)");
@@ -198,6 +206,7 @@ namespace viaggioAttraversoLaTerraDiMezzo
         {
             int puntiS = 15, posizioneG = 0, pozioniCura = 0, cavalcature = 0, invisibilità = 0;
             int[] inventario = { pozioniCura, cavalcature, invisibilità };
+            string[] nomiOggetti = { "pozioni di cura", "cavalcature", "invisibilità" };
             Random rand = new Random();
 
             Console.WriteLine("partirai dalla Contea");
@@ -214,7 +223,7 @@ namespace viaggioAttraversoLaTerraDiMezzo
 
                 posizioneG = posizioneG + casella;
 
-                if (posizioneG > mappa.Length)
+                if (posizioneG >= mappa.Length)
                 {
                     posizioneG = mappa.Length - 1;
                 }
@@ -226,7 +235,14 @@ namespace viaggioAttraversoLaTerraDiMezzo
                 Console.WriteLine("Ti sei mosso di " + casella + " passi.");
                 Console.WriteLine("Ti trovi sulla casella: " + mappa[posizioneG]);
                 Console.WriteLine("hai " + puntiS + " punti salute");
-                Console.WriteLine("Il tuo inventario al momento e: " + inventario);
+                for (int z = 0; z < inventario.Length; z++)
+                {
+                    Console.WriteLine("              ");
+                    Console.WriteLine(nomiOggetti[z]);
+                    Console.WriteLine("Il tuo inventario al momento e: " + inventario[z]);
+                    Console.WriteLine("              ");
+
+                }
                 if (evento <= 3)
                 {
 
@@ -283,8 +299,9 @@ namespace viaggioAttraversoLaTerraDiMezzo
                     int probabilitaP = rand.Next(1, 2);
                     if (risposta == "s" && probabilitaP == 1)
                     {
-                        posizioneG = posizioneG + 2;
-                        Console.WriteLine("Hai incontrato una creatura abbastanza socievole che ti aiutera mandandoti avanti di 2 caselle nel tuo percorso e perciò la tua posizione attuale e: " + mappa[posizioneG]);
+                       
+                        Console.WriteLine("Hai incontrato una creatura abbastanza socievole che ti aiutera dandoti un'oggetto");
+
                     }
                     else if (risposta == "s" && probabilitaP == 2)
                     {
@@ -387,6 +404,7 @@ namespace viaggioAttraversoLaTerraDiMezzo
         {
             int puntiS = 10, posizioneG = 0, pozioniCura = 0, cavalcature = 0, invisibilità = 0;
             int[] inventario = { pozioniCura, cavalcature, invisibilità };
+            string[] nomiOggetti = { "pozioni di cura", "cavalcature", "invisibilità" };
             Random rand = new Random();
 
             Console.WriteLine("partirai dalla Contea");
@@ -415,7 +433,14 @@ namespace viaggioAttraversoLaTerraDiMezzo
                 Console.WriteLine("Ti sei mosso di " + casella + " passi.");
                 Console.WriteLine("Ti trovi sulla casella: " + mappa[posizioneG]);
                 Console.WriteLine("hai " + puntiS + " punti salute");
-                Console.WriteLine("Il tuo inventario al momento e: " + inventario);
+                for (int z = 0; z < inventario.Length; z++)
+                {
+                    Console.WriteLine("              ");
+                    Console.WriteLine(nomiOggetti[z]);
+                    Console.WriteLine("Il tuo inventario al momento e: " + inventario[z]);
+                    Console.WriteLine("              ");
+
+                }
                 if (evento <= 3)
                 {
 
