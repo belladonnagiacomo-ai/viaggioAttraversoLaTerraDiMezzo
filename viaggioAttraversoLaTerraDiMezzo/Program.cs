@@ -4,18 +4,20 @@ namespace viaggioAttraversoLaTerraDiMezzo
 {
     internal class Program
     {
+        //inizio prima funzione
         static void Merry(string[] mappa)
         {
-
+            //dichiarazione variabili
             int puntiS = 10, posizioneG = 0, pozioniCura = 0, invisibilità = 0;
             int[] inventario = { pozioniCura, invisibilità };
             string[] nomiOggetti = { "pozioni di cura", "invisibilità" };
             Random rand = new Random();
+            //Commenti iniziali
             Console.WriteLine("Ciao  Merry, hai scelto di intraprendere un viaggio molto pericoloso alla distruzione dell'anello del male");
             Console.WriteLine("                                      ");
             Console.WriteLine("partirai dalla Contea");
             Console.WriteLine("hai " + puntiS + " punti salute e un buff personaggio(+1 probabilita di fuga)");
-
+            //inizio while
             while (puntiS > 0 && posizioneG < mappa.Length - 1)
             {
 
@@ -27,11 +29,10 @@ namespace viaggioAttraversoLaTerraDiMezzo
 
                 posizioneG = posizioneG + casella;
 
-                if (posizioneG > mappa.Length)
+                if (posizioneG >= mappa.Length)
                 {
                     posizioneG = mappa.Length - 1;
                 }
-
 
 
 
@@ -49,13 +50,27 @@ namespace viaggioAttraversoLaTerraDiMezzo
                 }
                 Console.WriteLine("vuoi uscire dal gioco?(s/n)");
                 string Scelta = Console.ReadLine();
-
-                if(Scelta == "s")
+                if (puntiS <= 5 && pozioniCura >= 1)
+                {
+                    Console.WriteLine("La tua salute attuale ora e di: " + puntiS + " vuoi utilizzare la pozione di cura(ti darà 2 punti vita)? s/n");
+                    string dec = Console.ReadLine();
+                    if (dec == "s")
+                    {
+                        puntiS = puntiS + 2;
+                        inventario[pozioniCura] = pozioniCura - 1;
+                        Console.WriteLine("Buona scelta, hai deciso di utilizzare la pozione di cura");
+                    }
+                    else
+                    {
+                        Console.WriteLine("non hai deciso di utilizzare la pozione di cura, ora combatti!");
+                    }
+                }
+                if (Scelta == "s")
                 {
                     Console.WriteLine("Hai scelto di uscire dal gioco");
                     Environment.Exit(0);
                 }  
-
+                //primo evento
                 if (evento <= 3)
                 {
 
@@ -75,7 +90,10 @@ namespace viaggioAttraversoLaTerraDiMezzo
                         if (danno >= 3)
                         {
 
-                            Console.WriteLine("Congratulazioni!, sei riuscito ha sconfiggere il mostro");
+                           
+
+                            Console.WriteLine("Congratulazioni!, sei riuscito ha sconfiggere il mostro e ti droppera un'oggetto");
+                            inventario[invisibilità] = invisibilità + 1;
 
                         }
                         else
@@ -91,7 +109,8 @@ namespace viaggioAttraversoLaTerraDiMezzo
                         if (danno >= 3)
                         {
 
-                            Console.WriteLine("Congratulazioni!, sei riuscito ha sconfiggere il mostro");
+                            Console.WriteLine("Congratulazioni!, sei riuscito ha sconfiggere il mostro e ti droppera un'oggetto");
+                            inventario[invisibilità] = invisibilità + 1;
 
                         }
                         else
@@ -105,6 +124,7 @@ namespace viaggioAttraversoLaTerraDiMezzo
 
 
                 }
+                //secondo evento
                 else if (evento <= 6)
                 {
                     Console.WriteLine("Hai incontrato una creatura magica, vuoi provare a interagirci?(s/n)");
@@ -114,7 +134,7 @@ namespace viaggioAttraversoLaTerraDiMezzo
                     {
 
                         Console.WriteLine("Hai incontrato una creatura abbastanza socievole che ti aiutera dandoti un'oggetto");
-                        inventario[pozioniCura] = pozioniCura + 1;
+                        inventario[pozioniCura] = pozioniCura++;
 
 
                     }
@@ -201,11 +221,13 @@ namespace viaggioAttraversoLaTerraDiMezzo
 
 
                 }
+                //sconfitta
                 if (puntiS <= 0)
                 {
                     Console.WriteLine("sei stato sconfitto, ma non preoccuparti potrai ritentare la tua fortuna");
                     return;
                 }
+                //destinazione finale
                 else if (mappa[posizioneG] == "Monte Fato")
                 {
                     int dannoF = rand.Next(1, 3);
@@ -244,17 +266,20 @@ namespace viaggioAttraversoLaTerraDiMezzo
 
             }
         }
+        //seconda funzione
         static void Frodo(string[] mappa)
         {
+            //dichiarazione variabili
             int puntiS = 15, posizioneG = 0, pozioniCura = 0, invisibilità = 0;
             int[] inventario = { pozioniCura, invisibilità };
             string[] nomiOggetti = { "pozioni di cura", "invisibilità" };
             Random rand = new Random();
+            //primi commenti
             Console.WriteLine("Ciao  Frodo, hai scelto di intraprendere un viaggio molto pericoloso alla distruzione dell'anello del male");
             Console.WriteLine("                                      ");
             Console.WriteLine("partirai dalla Contea");
             Console.WriteLine("hai " + puntiS + " punti salute e un buff personaggio(+5 punti vita)");
-
+            //inizio while
             while (puntiS > 0 && posizioneG < mappa.Length - 1)
             {
 
@@ -270,7 +295,7 @@ namespace viaggioAttraversoLaTerraDiMezzo
                 {
                     posizioneG = mappa.Length - 1;
                 }
-
+             
 
 
 
@@ -288,12 +313,27 @@ namespace viaggioAttraversoLaTerraDiMezzo
                 }
                 Console.WriteLine("vuoi uscire dal gioco?(s/n)");
                 string Scelta = Console.ReadLine();
-
+                if (puntiS <= 5 && pozioniCura >= 1)
+                {
+                    Console.WriteLine("La tua salute attuale ora e di: " + puntiS + " vuoi utilizzare la pozione di cura(ti darà 2 punti vita)? s/n");
+                    string dec = Console.ReadLine();
+                    if (dec == "s")
+                    {
+                        puntiS = puntiS + 2;
+                        inventario[pozioniCura] = pozioniCura - 1;
+                        Console.WriteLine("Buona scelta, hai deciso di utilizzare la pozione di cura");
+                    }
+                    else
+                    {
+                        Console.WriteLine("non hai deciso di utilizzare la pozione di cura, ora combatti!");
+                    }
+                }
                 if (Scelta == "s")
                 {
                     Console.WriteLine("Hai scelto di uscire dal gioco");
                     Environment.Exit(0);
                 }
+                //primo evento
                 if (evento <= 3)
                 {
 
@@ -313,7 +353,10 @@ namespace viaggioAttraversoLaTerraDiMezzo
                         if (danno >= 3)
                         {
 
-                            Console.WriteLine("Congratulazioni!, sei riuscito ha sconfiggere il mostro");
+                            
+
+                            Console.WriteLine("Congratulazioni!, sei riuscito ha sconfiggere il mostro e ti droppera un'oggetto");
+                            inventario[invisibilità] = invisibilità + 1;
 
                         }
                         else
@@ -329,7 +372,9 @@ namespace viaggioAttraversoLaTerraDiMezzo
                         if (danno >= 3)
                         {
 
-                            Console.WriteLine("Congratulazioni!, sei riuscito ha sconfiggere il mostro");
+
+                            Console.WriteLine("Congratulazioni!, sei riuscito ha sconfiggere il mostro e ti droppera un'oggetto");
+                            inventario[invisibilità] = invisibilità + 1;
 
                         }
                         else
@@ -343,6 +388,7 @@ namespace viaggioAttraversoLaTerraDiMezzo
 
 
                 }
+                //secondo evento
                 else if (evento <= 6)
                 {
                     Console.WriteLine("Hai incontrato una creatura magica, vuoi provare a interagirci?(s/n)");
@@ -441,11 +487,13 @@ namespace viaggioAttraversoLaTerraDiMezzo
 
 
             }
+            //sconfitta
             if (puntiS <= 0)
             {
                 Console.WriteLine("sei stato sconfitto, ma non preoccuparti potrai ritentare la tua fortuna");
                 return;
             }
+            //arrivo a destinazione
             else if (mappa[posizioneG] == "Monte Fato")
             {
                 int dannoF = rand.Next(1, 3);
@@ -483,17 +531,20 @@ namespace viaggioAttraversoLaTerraDiMezzo
             }
 
         }
+        //terza funzione
         static void Sam(string[] mappa)
         {
+            //dichiarazione variabili
             int puntiS = 10, posizioneG = 0, pozioniCura = 0, invisibilità = 0;
             int[] inventario = { pozioniCura, invisibilità };
             string[] nomiOggetti = { "pozioni di cura", "invisibilità" };
             Random rand = new Random();
+            //primi commenti
             Console.WriteLine("Ciao  Sam, hai scelto di intraprendere un viaggio molto pericoloso alla distruzione dell'anello del male");
             Console.WriteLine("                                      ");
             Console.WriteLine("partirai dalla Contea");
             Console.WriteLine("hai " + puntiS + " punti salute e un buff personaggio(+1 di danno ai nemici)");
-
+            //inizio while
             while (puntiS > 0 && posizioneG < mappa.Length - 1)
             {
 
@@ -505,12 +556,12 @@ namespace viaggioAttraversoLaTerraDiMezzo
 
                 posizioneG = posizioneG + casella;
 
-                if (posizioneG > mappa.Length)
+                if (posizioneG >= mappa.Length)
                 {
                     posizioneG = mappa.Length - 1;
                 }
 
-
+               
 
 
 
@@ -527,12 +578,27 @@ namespace viaggioAttraversoLaTerraDiMezzo
                 }
                 Console.WriteLine("vuoi uscire dal gioco?(s/n)");
                 string Scelta = Console.ReadLine();
-
+                if (puntiS <= 5 && pozioniCura >= 1)
+                {
+                    Console.WriteLine("La tua salute attuale ora e di: " + puntiS + " vuoi utilizzare la pozione di cura(ti darà 2 punti vita)? s/n");
+                    string dec = Console.ReadLine();
+                    if (dec == "s")
+                    {
+                        puntiS = puntiS + 2;
+                        inventario[pozioniCura] = pozioniCura - 1;
+                        Console.WriteLine("Buona scelta, hai deciso di utilizzare la pozione di cura");
+                    }
+                    else
+                    {
+                        Console.WriteLine("non hai deciso di utilizzare la pozione di cura, ora combatti!");
+                    }
+                }
                 if (Scelta == "s")
                 {
                     Console.WriteLine("Hai scelto di uscire dal gioco");
                     Environment.Exit(0);
                 }
+                //primo evento
                 if (evento <= 3)
                 {
 
@@ -552,7 +618,9 @@ namespace viaggioAttraversoLaTerraDiMezzo
                         if (danno >= 3)
                         {
 
-                            Console.WriteLine("Congratulazioni!, sei riuscito ha sconfiggere il mostro");
+
+                            Console.WriteLine("Congratulazioni!, sei riuscito ha sconfiggere il mostro e ti droppera un'oggetto");
+                            inventario[invisibilità] = invisibilità + 1;
 
                         }
                         else
@@ -568,7 +636,9 @@ namespace viaggioAttraversoLaTerraDiMezzo
                         if (danno >= 4)
                         {
 
-                            Console.WriteLine("Congratulazioni!, sei riuscito ha sconfiggere il mostro");
+
+                            Console.WriteLine("Congratulazioni!, sei riuscito ha sconfiggere il mostro e ti droppera un'oggetto");
+                            inventario[invisibilità] = invisibilità + 1;
 
                         }
                         else
@@ -582,6 +652,7 @@ namespace viaggioAttraversoLaTerraDiMezzo
 
 
                 }
+                //secondo evento
                 else if (evento <= 6)
                 {
                     Console.WriteLine("Hai incontrato una creatura magica, vuoi provare a interagirci?(s/n)");
@@ -680,11 +751,13 @@ namespace viaggioAttraversoLaTerraDiMezzo
 
 
             }
+            //sconfitta
             if (puntiS <= 0)
             {
                 Console.WriteLine("sei stato sconfitto, ma non preoccuparti potrai ritentare la tua fortuna");
                 return;
             }
+            //arrivo a destinazione
             else if (mappa[posizioneG] == "Monte Fato")
             {
                 int dannoF = rand.Next(1, 3);
@@ -724,9 +797,10 @@ namespace viaggioAttraversoLaTerraDiMezzo
         }
         static void Main(string[] args)
         {
-            
+            //scelta personaggi
             Console.WriteLine("Benvenuti nel viaggio attraverso la terra di mezzo selezionate il vostro personaggio: 1)Frodo 2)Sam 3)Merry");
             int nome = Convert.ToInt32(Console.ReadLine());
+            //tappe della mappa
             string[] mappa = { "Contea", "I colli di brea", "Il puledro impennato", "Bosco vecchio", "Tumulilande", "Gran Burrone", "Lothlórien", "Fiume Morgul", "Moria", "La Cripta di Balin", "Le Cascate di Rauros", "Cirith Ungol", "Emyn Muil", "Le Paludi Morte", "Piana di Gorgoroth", "Bosco Atro", "Valle dell'Ombra", "Minas Tirith", "Minas Morgul", "Monte Fato" };
             if (nome == 1)
             {
